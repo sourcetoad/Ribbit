@@ -1,5 +1,5 @@
 {
-    "name": "ribbit",
+    "name": "@sourcetoad/ribbit",
     "version": "0.3.4",
     "description": "An api module for Sourcetoad projects",
     "private": true,
