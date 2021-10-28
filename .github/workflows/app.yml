@@ -20,10 +20,10 @@ jobs:
       - name: Build
         run: yarn run dev
 
-# TODO: Uncomment when linting or testing is installed
-#      - name: Linting
-#        run: yarn run lint
-#
+      - name: Linting
+        run: yarn run lint
+        
+# TODO: Uncomment when testing is installed
 #      - name: Testing
 #        run: yarn run test
 
