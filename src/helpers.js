@@ -8,5 +8,5 @@ const _toString = Object.prototype.toString;
  * @return {boolean}
  */
 export function isPlainObject(obj) {
-    return _toString.call(obj) === '[object Object]'
+    return _toString.call(obj) === '[object Object]';
 }

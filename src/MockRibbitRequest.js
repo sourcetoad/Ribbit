@@ -27,7 +27,7 @@ export default class MockRibbitRequest {
         if (!this.wait) {
             return Promise.resolve(this.mockResponse());
         } else {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 this.timeout = setTimeout(() => resolve(this.mockResponse()), this.wait);
             });
         }

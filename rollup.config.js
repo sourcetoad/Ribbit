@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
+import {eslint} from 'rollup-plugin-eslint';
 
 // region build variables
 const packageName = 'Ribbit';
@@ -24,7 +25,7 @@ export default {
             sourcemap: env === 'development',
         },
         {
-            format: "cjs",
+            format: 'cjs',
             file: buildFilename('cjs'),
             name: packageName,
             exports: 'named',
@@ -39,6 +40,10 @@ export default {
         },
     ],
     plugins: [
+        eslint({
+            throwOnError: true,
+            fix: true,
+        }),
         resolve(),
         commonjs(), // Allow us to build common js modules
         babel({
