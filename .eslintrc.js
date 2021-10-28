@@ -1,7 +1,7 @@
 module.exports = {
     env: {
         browser: true,
-        es6: true,
+        es2020: true,
         // This is needed to prevent errors in webpack.config.js about `module` and `__dirname` being undefined.
         node: true,
         // This is needed to prevent errors in tests about Jest functions being undefined.
@@ -17,7 +17,7 @@ module.exports = {
     parserOptions: {
         sourceType: 'module',
         // We need a high enough ECMA version to support nullish assignment.
-        ecmaVersion: 2021,
+        ecmaVersion: 2020,
     },
     rules: {
         'eqeqeq': ['error', 'always'],
