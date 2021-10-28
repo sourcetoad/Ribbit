@@ -21,7 +21,6 @@ module.exports = {
     },
     rules: {
         'eqeqeq': ['error', 'always'],
-        'no-unused-vars': 'warn',
         'quotes': ['warn', 'single', {
             'avoidEscape': true,
             'allowTemplateLiterals': false,
