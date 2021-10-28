@@ -140,7 +140,7 @@ export default class Ribbit {
      * @param {{}|undefined} params
      * @returns {string}
      */
-    buildUrl(baseUrl, params= undefined) {
+    buildUrl(baseUrl, params = undefined) {
         const paramString = params
             ? Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&')
             : '';
