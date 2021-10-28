@@ -8,7 +8,7 @@
     "scripts": {
         "dev": "NODE_ENV=development rollup --config ./rollup.config.js",
         "prod": "NODE_ENV=production rollup --config ./rollup.config.js",
-        "prepare": "yarn run build",
+        "prepare": "yarn run dev",
         "test": "test",
         "watch": "npm run dev -- --watch"
     },
