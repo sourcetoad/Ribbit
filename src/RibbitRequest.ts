@@ -1,24 +1,17 @@
 export default class RibbitRequest {
-    /**
-     * @param {string} url
-     * @param {{}} config
-     */
-    constructor(url, config = {}) {
+    public request: Request;
+    public controller: AbortController;
+
+    constructor(url: string, config: RequestInit = {}) {
         this.request = new Request(url, config);
         this.controller = new AbortController();
     }
 
-    /**
-     * @return {void}
-     */
-    abort() {
+    abort(): void {
         this.controller.abort();
     }
 
-    /**
-     * @return {Promise<Response>}
-     */
-    send() {
+    send(): Promise<Response> {
         return fetch(this.request, {
             signal: this.controller.signal
         });
