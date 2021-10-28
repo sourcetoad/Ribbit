@@ -1,0 +1,19 @@
+# node.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# dist
+/dist/*
+
+# editors
+.vscode
+.idea
+*.swp
+*.orig
+
+# OS ignores
+.DS_Store
+
+# env
+.env*
