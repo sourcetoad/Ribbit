@@ -12,7 +12,8 @@
     "scripts": {
         "dev": "NODE_ENV=development rollup --config ./rollup.config.js",
         "prod": "NODE_ENV=production rollup --config ./rollup.config.js",
-        "watch": "npm run dev -- --watch",
+        "watch": "npx run dev -- --watch",
+        "prepare": "npx run prod",
         "test": "jest",
         "lint": "eslint . --config ./.eslintrc.js"
     },
