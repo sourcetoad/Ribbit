@@ -1,2 +1,3 @@
 # Ribbit
-A Http client wrapper for fetch.
+An api module for Sourcetoad projects
+
