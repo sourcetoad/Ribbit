@@ -4,9 +4,8 @@ import eslint from '@rollup/plugin-eslint';
 import typescript from '@rollup/plugin-typescript';
 
 // region build variables
-const packageName = 'Ribbit';
+const packageName = 'ribbit';
 const env = process.env?.NODE_ENV === 'development' ? 'development' : 'production';
-const extensions = [".js", ".jsx", ".ts", ".tsx"];
 // endregion
 
 // region helper functions

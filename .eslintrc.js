@@ -9,19 +9,25 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
     ],
     ignorePatterns: [
         'dist/**/*',
         'babel.config.js',
     ],
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         sourceType: 'module',
     },
+    plugins: [
+        '@typescript-eslint',
+    ],
     rules: {
         'eqeqeq': ['error', 'always'],
         'quotes': ['warn', 'single', {
             'avoidEscape': true,
             'allowTemplateLiterals': false,
         }],
+        '@typescript-eslint/no-inferrable-types': ['off'],
     },
 };

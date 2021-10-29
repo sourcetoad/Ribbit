@@ -12,8 +12,8 @@
     "scripts": {
         "dev": "NODE_ENV=development rollup --config ./rollup.config.js",
         "prod": "NODE_ENV=production rollup --config ./rollup.config.js",
-        "watch": "npx run dev -- --watch",
-        "prepare": "npx run prod",
+        "watch": "npm run dev -- --watch",
+        "prepare": "npm run prod",
         "test": "jest",
         "lint": "eslint . --config ./.eslintrc.js"
     },
@@ -24,6 +24,8 @@
         "@rollup/plugin-node-resolve": "^13.0.6",
         "@rollup/plugin-typescript": "^8.3.0",
         "@types/web": "^0.0.43",
+        "@typescript-eslint/eslint-plugin": "^5.2.0",
+        "@typescript-eslint/parser": "^5.2.0",
         "eslint": "^8.1.0",
         "rollup": "^2.58.3",
         "tslib": "^2.3.1",
