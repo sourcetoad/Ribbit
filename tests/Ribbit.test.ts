@@ -1,6 +1,6 @@
 
 import Ribbit, {HttpStatusCode} from '../src';
-import {actions, buildUrl} from './__helpers';
+import {actions, buildUrl} from './helpers';
 
 describe('Test that you can make a successful call', () => {
     const api = new Ribbit();
