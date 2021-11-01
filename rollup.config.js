@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
 import {nodeResolve as resolve} from '@rollup/plugin-node-resolve';
-import eslint from '@rollup/plugin-eslint';
 import typescript from '@rollup/plugin-typescript';
 
 // region build variables
@@ -31,9 +30,6 @@ export default {
         },
     ],
     plugins: [
-        eslint({
-            throwOnError: true
-        }),
         resolve(),
         commonjs(),
         typescript({
