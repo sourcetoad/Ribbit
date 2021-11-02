@@ -10,11 +10,11 @@
     ],
     "types": "dist/types/index.d.ts",
     "scripts": {
-        "dev": "NODE_ENV=development; rollup --config ./rollup.config.js",
-        "prod": "NODE_ENV=production; rollup --config ./rollup.config.js",
+        "dev": "NODE_ENV=development rollup --config ./rollup.config.js",
+        "prod": "NODE_ENV=production rollup --config ./rollup.config.js",
         "watch": "npm run dev -- --watch",
         "prepare": "npm run prod",
-        "test": "NODE_ENV=test; jest",
+        "test": "NODE_ENV=testing jest",
         "lint": "eslint . --config ./.eslintrc.js"
     },
     "devDependencies": {

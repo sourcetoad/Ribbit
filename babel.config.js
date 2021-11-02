@@ -1,8 +1,10 @@
 module.exports = {
-    "env": {
-        "test": {
-            "presets": [
-                ["@babel/env", {targets: {node: "current"}}],
+    env: {
+        testing: {
+            presets: [
+                ['@babel/preset-env', {
+                    targets: {node: 'current'}
+                }],
             ],
         }
     },

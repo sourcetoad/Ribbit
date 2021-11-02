@@ -1,6 +1,4 @@
-export const baseUrl = 'http://tests.example.com';
-
-export const actions = Object.freeze({
+export const actions: Record<string, string> = Object.freeze({
     list: 'list',
     create: 'create',
     read: 'read',
@@ -8,7 +6,9 @@ export const actions = Object.freeze({
     delete: 'delete',
 });
 
-export function buildUrl(path = '') {
+export const baseUrl: string = 'http://tests.example.com';
+
+export function buildUrl(path: string = ''): string {
     if (!path) {
         return baseUrl
     }
