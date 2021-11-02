@@ -1,3 +1,4 @@
+const _hasOwnProperty = Object.prototype.hasOwnProperty;
 const _toString = Object.prototype.toString;
 
 /**
@@ -6,4 +7,8 @@ const _toString = Object.prototype.toString;
  */
 export function isPlainObject(obj: unknown): boolean {
     return _toString.call(obj) === '[object Object]';
+}
+
+export function hasOwnProperty(obj: unknown, key: string): boolean {
+    return _hasOwnProperty.call(obj, key);
 }
