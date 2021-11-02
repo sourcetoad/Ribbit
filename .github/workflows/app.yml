@@ -23,7 +23,5 @@ jobs:
       - name: Linting
         run: yarn run lint
 
-# TODO: Uncomment when testing is installed
-#      - name: Testing
-#        run: yarn run test
-
+      - name: Testing
+        run: yarn run test
