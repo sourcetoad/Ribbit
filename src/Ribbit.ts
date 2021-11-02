@@ -78,15 +78,30 @@ export default class Ribbit {
         });
     }
 
-    buildBody(data: RibbitRequestData): string | FormData {
+    buildBody(data: RibbitRequestData): FormData | string {
         return isPlainObject(data) ? JSON.stringify(data) : (data as FormData);
     }
 
     buildUrl(baseUrl: string, params?: RequestRibbitParams): string {
-        const paramString = params
-            ? Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&')
-            : '';
+        if (!params) {
+            return baseUrl;
+        }
 
-        return paramString ? `${baseUrl}?${paramString}` : baseUrl;
+        const paramString = Object.entries(params)
+            .map(([key, value]) => {
+                switch (typeof value) {
+                    case 'boolean':
+                        return `${key}=${value ? 1 : 0}`;
+                    default:
+                        return `${key}=${value}`;
+                }
+            })
+            .join('&');
+
+        if (!paramString) {
+            return baseUrl;
+        }
+
+        return `${baseUrl}?${paramString}`;
     }
 }
