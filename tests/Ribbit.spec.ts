@@ -2,7 +2,6 @@
 import Ribbit, {HttpStatusCode} from '../src';
 import {hasOwnProperty} from '../src/helpers';
 import {Action, baseUrl} from './helpers';
-import {response} from 'msw';
 
 describe('Test that you can make a successful call', () => {
     const api = new Ribbit();
