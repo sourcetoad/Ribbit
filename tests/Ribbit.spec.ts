@@ -2,6 +2,7 @@
 import Ribbit, {HttpStatusCode} from '../src';
 import {hasOwnProperty} from '../src/helpers';
 import {Action, baseUrl} from './helpers';
+import {response} from 'msw';
 
 describe('Test that you can make a successful call', () => {
     const api = new Ribbit();
@@ -236,5 +237,26 @@ describe('That you can override the default headers', () => {
                 expect(request.request.headers.get(key)).toBe(headers[key]);
             }
         }
+    });
+});
+
+describe('You can abort a request', () => {
+    const api = new Ribbit();
+
+    it('By calling abort()', async () => {
+        // Arrange
+        const request = api.get(`${baseUrl}/${Action.LIST}/${HttpStatusCode.HTTP_OK}`);
+        const signal = request.controller.signal;
+        const handler = jest.fn();
+
+        signal.addEventListener('abort', handler);
+
+        // Act
+        await request.send();
+        request.abort();
+
+        // Assert
+        expect(handler).toBeCalledTimes(1);
+        expect(signal.aborted).toBeTruthy();
     });
 });
