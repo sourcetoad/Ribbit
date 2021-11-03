@@ -1,13 +1,11 @@
-import babel from '@rollup/plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import {terser} from 'rollup-plugin-terser';
-import {eslint} from 'rollup-plugin-eslint';
+import commonjs from '@rollup/plugin-commonjs';
+import {nodeResolve as resolve} from '@rollup/plugin-node-resolve';
+import eslint from '@rollup/plugin-eslint';
+import typescript from '@rollup/plugin-typescript';
 
 // region build variables
-const packageName = 'Ribbit';
+const packageName = 'ribbit';
 const env = process.env?.NODE_ENV === 'development' ? 'development' : 'production';
-const extensions = ['.js', '.jsx'];
 // endregion
 
 // region helper functions
@@ -15,15 +13,8 @@ const buildFilename = format => `dist/index.${format}.js`;
 // endregion
 
 export default {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [
-        {
-            format: 'umd',
-            file: buildFilename('umd'),
-            name: packageName,
-            exports: 'named',
-            sourcemap: env === 'development',
-        },
         {
             format: 'cjs',
             file: buildFilename('cjs'),
@@ -41,17 +32,12 @@ export default {
     ],
     plugins: [
         eslint({
-            throwOnError: true,
-            fix: true,
+            throwOnError: true
         }),
         resolve(),
-        commonjs(), // Allow us to build common js modules
-        babel({
-            exclude:'node_modules/**',
-            extensions,
-            babelHelpers: 'bundled',
-            envName: env === 'production' ? 'browser' : 'browserDev'
+        commonjs(),
+        typescript({
+            tsconfig: './tsconfig.json',
         }),
-        (env === 'production' && terser())
     ],
 }

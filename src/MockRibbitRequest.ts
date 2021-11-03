@@ -1,29 +1,23 @@
 export default class MockRibbitRequest {
-    /**
-     * @param {{}} data
-     * @param {number} wait
-     * @param {number} status
-     */
-    constructor(data, wait = 0, status = 200) {
+    public data: Record<string, unknown>;
+    public wait: number;
+    public status: number;
+    public timeout:  NodeJS.Timeout | undefined;
+
+    constructor(data: Record<string, unknown>, wait: number = 0, status: number = 200) {
         this.data = data;
         this.wait = wait;
         this.status = status;
         this.timeout = undefined;
     }
 
-    /**
-     * @return {void}
-     */
-    abort() {
+    abort(): void {
         if (this.timeout) {
             clearTimeout(this.timeout);
         }
     }
 
-    /**
-     * @returns {Promise<Response>}
-     */
-    send() {
+    send(): Promise<Response> {
         if (!this.wait) {
             return Promise.resolve(this.mockResponse());
         } else {
@@ -33,10 +27,7 @@ export default class MockRibbitRequest {
         }
     }
 
-    /**
-     * @returns {Response}
-     */
-    mockResponse() {
+    mockResponse(): Response {
         return new Response(JSON.stringify(this.data), {
             status: this.status,
         });
