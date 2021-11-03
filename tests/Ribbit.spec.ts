@@ -177,14 +177,6 @@ describe('That the buildUrl() function works as expected', () => {
         expect(result).toBe(baseUrl);
     });
 
-    it('Can handle empty string', () => {
-        // Act
-        const result = api.buildUrl(baseUrl, undefined);
-
-        // Assert
-        expect(result).toBe(baseUrl);
-    });
-
     it('Can handle undefined', () => {
         // Act
         const result = api.buildUrl(baseUrl, undefined);
