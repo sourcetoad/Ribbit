@@ -1,8 +1,8 @@
 export enum Action {
     LIST = 'list',
-    CREATE = 'CREATE',
-    READ = 'READ',
-    UPDATE = 'UPDATE',
+    CREATE = 'create',
+    READ = 'read',
+    UPDATE = 'update',
     DELETE = 'delete',
 }
 
