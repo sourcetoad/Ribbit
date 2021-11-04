@@ -1,6 +1,11 @@
+import HttpStatusCode from './HttpStatusCode';
+import MockRibbitRequest from './MockRibbitRequest';
 import Ribbit from './Ribbit';
 import RibbitRequest from './RibbitRequest';
-import MockRibbitRequest from './MockRibbitRequest';
 
-export {RibbitRequest, MockRibbitRequest};
+export {
+    HttpStatusCode,
+    MockRibbitRequest,
+    RibbitRequest,
+};
 export default Ribbit;

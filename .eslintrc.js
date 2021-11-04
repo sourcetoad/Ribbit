@@ -12,8 +12,11 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
     ],
     ignorePatterns: [
-        'dist/**/*',
         'babel.config.js',
+        'jest.config.js',
+        'jest.setup.js',
+        'rollup.config.js',
+        'dist/**/*',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
