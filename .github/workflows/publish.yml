@@ -1,0 +1,45 @@
+name: Publish
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  publish:
+    environment: production
+    runs-on: ubuntu-latest
+
+    name: Publish
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Yarn Install
+        run: yarn install --network-concurrency 1
+
+      - name: Build
+        run: yarn prod
+
+      - name: Publish (NPM)
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Get Version
+        id: vars
+        run: echo "::set-output name=dir::$(jq -r ".version" package.json)"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: false
+          prerelease: false
+          name: ${{ steps.vars.outputs.version }}
+          git_tag: ${{ steps.vars.outputs.version }}
+          generate_release_notes: true
