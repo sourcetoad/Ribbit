@@ -23,7 +23,7 @@ $ yarn add --dev @sourcetoad/ribbit
 
 ## Usage
 
-**The main api class**
+The main api class
 
 ```javascript
 import DataApi from '@js/modules/api/DataApi';
@@ -44,7 +44,7 @@ export default class Api {
 }
 ```
 
-**The base api that does any method and property overrides**
+The base api class 
 
 ```javascript
 import Ribbit from '@sourcetoad/ribbit';
@@ -61,7 +61,7 @@ export default class BaseApi extends Ribbit {
 }
 ```
 
-**The individual classes to break up your methods**
+The individual api classes
 
 ```javascript
 import BaseApi from '@js/modules/api/BaseApi';
@@ -91,7 +91,7 @@ export default class DataApi extends BaseApi {
 
 ### Vue Integration
 
-The best way to use ribbit with vue is by creating a Vue plugin.
+@js/plugins/api
 
 ```javascript
 import Api from '@js/modules/api';
@@ -103,7 +103,7 @@ export default {
 }
 ```
 
-In your app.js
+@js/app.js
 
 ```javascript
 import Vue from 'vue';
