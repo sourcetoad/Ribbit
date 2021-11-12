@@ -141,12 +141,11 @@ export default {
     },
     methods: {
         async getData() {
-            this.loading = true;
-
             if (this.request) {
                 this.request.abort();
             }
-
+            
+            this.loading = true;
             this.request = this.$api.data.list();
             const response = await this.request.send();
 
