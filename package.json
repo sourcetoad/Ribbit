@@ -1,12 +1,12 @@
 {
     "name": "@sourcetoad/ribbit",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An api module for Sourcetoad projects",
     "license" : "ISC",
     "main": "dist/index.cjs.js",
     "module": "dist/index.es.js",
     "files": [
-        "dist"
+        "dist/*"
     ],
     "types": "dist/types/index.d.ts",
     "scripts": {
