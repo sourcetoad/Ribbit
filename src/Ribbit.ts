@@ -1,8 +1,8 @@
 import RibbitRequest from './RibbitRequest';
 import {isPlainObject} from './helpers';
 
-type RibbitRequestData = FormData | Record<string, unknown>;
-type RequestRibbitParams = Record<string, string | number | boolean>;
+export type RibbitRequestData = FormData | Record<string, unknown>;
+export type RibbitRequestParams = Record<string, string | number | boolean>;
 
 export default class Ribbit {
     static get defaultHeaders(): Record<string, string> {
@@ -14,7 +14,7 @@ export default class Ribbit {
 
     get(
         url: string,
-        params: RequestRibbitParams = {},
+        params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
         return new RibbitRequest(this.buildUrl(url, params), {
@@ -27,7 +27,7 @@ export default class Ribbit {
     post(
         url: string,
         data: RibbitRequestData = {},
-        params: RequestRibbitParams = {},
+        params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
         return new RibbitRequest(this.buildUrl(url, params), {
@@ -41,7 +41,7 @@ export default class Ribbit {
     put(
         url: string,
         data: RibbitRequestData = {},
-        params: RequestRibbitParams = {},
+        params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
         return new RibbitRequest(this.buildUrl(url, params), {
@@ -55,7 +55,7 @@ export default class Ribbit {
     patch(
         url: string,
         data: RibbitRequestData = {},
-        params: RequestRibbitParams = {},
+        params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
         return new RibbitRequest(this.buildUrl(url, params), {
@@ -68,7 +68,7 @@ export default class Ribbit {
 
     delete(
         url: string,
-        params: RequestRibbitParams = {},
+        params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
         return new RibbitRequest(this.buildUrl(url, params), {
@@ -82,7 +82,7 @@ export default class Ribbit {
         return isPlainObject(data) ? JSON.stringify(data) : (data as FormData);
     }
 
-    buildUrl(baseUrl: string, params?: RequestRibbitParams): string {
+    buildUrl(baseUrl: string, params?: RibbitRequestParams): string {
         if (!params) {
             return baseUrl;
         }
