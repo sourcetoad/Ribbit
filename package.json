@@ -6,7 +6,7 @@
     "main": "dist/index.cjs.js",
     "module": "dist/index.es.js",
     "files": [
-        "dist"
+        "dist/*"
     ],
     "types": "dist/types/index.d.ts",
     "scripts": {
