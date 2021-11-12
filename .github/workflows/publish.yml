@@ -33,7 +33,7 @@ jobs:
 
       - name: Get Version
         id: vars
-        run: echo "::set-output name=dir::$(jq -r ".version" package.json)"
+        run: echo "::set-output name=version::$(jq -r ".version" package.json)"
 
       - name: Release
         uses: softprops/action-gh-release@0465cdad11d833cabb6414f885edd2ccdfda4b96
