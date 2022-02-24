@@ -4,7 +4,7 @@ An api module based around fetch
 - [Installation](#installation)
 - [Usage](#usage)
   - [Vue integration](#vue-integration)
-  - [Overriding Headers](#overiding-headers)
+  - [Overriding Headers](#overriding-headers)
 - [License](#license)
 
 ## Installation
