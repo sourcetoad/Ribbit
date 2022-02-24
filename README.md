@@ -192,4 +192,4 @@ export default class DataApi extends BaseApi {
 
 ## License
 
-[ISC](LICENSE)
+[ISC](LICENSE.md)
