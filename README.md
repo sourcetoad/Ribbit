@@ -192,4 +192,4 @@ export default class DataApi extends BaseApi {
 
 ## License
 
-[ISC](LICENSE.md)
+[ISC](https://github.com/sourcetoad/Ribbit/blob/master/LICENSE.md)
