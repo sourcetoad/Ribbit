@@ -1,11 +1,11 @@
 # Ribbit
 An api module based around fetch
 
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Vue integration](#vue-integration)
-  - [Overriding Headers](#overiding-headers)
-- [License](#license)
+- [Installation](https://github.com/sourcetoad/Ribbit#installation)
+- [Usage](https://github.com/sourcetoad/Ribbit#usage)
+  - [Vue integration](https://github.com/sourcetoad/Ribbit#vue-integration)
+  - [Overriding Headers](https://github.com/sourcetoad/Ribbit#overriding-headers)
+- [License](https://github.com/sourcetoad/Ribbit#license)
 
 ## Installation
 
@@ -192,4 +192,4 @@ export default class DataApi extends BaseApi {
 
 ## License
 
-[ISC](LICENSE)
+[ISC](https://github.com/sourcetoad/Ribbit/blob/master/LICENSE.md)
