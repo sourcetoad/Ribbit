@@ -27,7 +27,7 @@ export default class MockRibbitRequest {
         }
     }
 
-    mockResponse(): Response {
+    private mockResponse(): Response {
         return new Response(JSON.stringify(this.data), {
             status: this.status,
         });
