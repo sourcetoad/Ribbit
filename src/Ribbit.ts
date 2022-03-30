@@ -78,11 +78,11 @@ export default class Ribbit {
         });
     }
 
-    buildBody(data: RibbitRequestData): FormData | string {
+    private buildBody(data: RibbitRequestData): FormData | string {
         return isPlainObject(data) ? JSON.stringify(data) : (data as FormData);
     }
 
-    buildUrl(baseUrl: string, params?: RibbitRequestParams): string {
+    private buildUrl(baseUrl: string, params?: RibbitRequestParams): string {
         if (!params) {
             return baseUrl;
         }
