@@ -3,7 +3,6 @@ import {buildBody, buildUrl} from '../src/RequestHelpers';
 import {baseUrl} from './helpers';
 
 describe('That the buildBody() function works as expected', () => {
-    const api = new Ribbit();
 
     it('When you give it a simple object it returns a json string', () => {
         // Arrange
@@ -42,7 +41,6 @@ describe('That the buildBody() function works as expected', () => {
 });
 
 describe('That the buildUrl() function works as expected', () => {
-    const api = new Ribbit();
 
     it('Can handle string params', () => {
         // Arrange
