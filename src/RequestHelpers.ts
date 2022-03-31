@@ -1,5 +1,5 @@
-import {RibbitRequestData, RibbitRequestParams} from "./Ribbit";
-import {isPlainObject} from "./helpers";
+import {RibbitRequestData, RibbitRequestParams} from './Ribbit';
+import {isPlainObject} from './helpers';
 
 export function buildBody(data: RibbitRequestData): FormData | string {
     return isPlainObject(data) ? JSON.stringify(data) : (data as FormData);
