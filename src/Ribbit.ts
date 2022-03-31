@@ -1,5 +1,5 @@
 import RibbitRequest from './RibbitRequest';
-import {isPlainObject} from './helpers';
+import {buildBody, buildUrl} from './RequestHelpers';
 
 export type RibbitRequestData = FormData | Record<string, unknown>;
 export type RibbitRequestParams = Record<string, string | number | boolean>;
@@ -17,7 +17,7 @@ export default class Ribbit {
         params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
-        return new RibbitRequest(this.buildUrl(url, params), {
+        return new RibbitRequest(buildUrl(url, params), {
             method: 'GET',
             headers: (this.constructor as typeof Ribbit).defaultHeaders,
             ...config
@@ -30,9 +30,9 @@ export default class Ribbit {
         params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
-        return new RibbitRequest(this.buildUrl(url, params), {
+        return new RibbitRequest(buildUrl(url, params), {
             method: 'POST',
-            body: this.buildBody(data),
+            body: buildBody(data),
             headers: (this.constructor as typeof Ribbit).defaultHeaders,
             ...config
         });
@@ -44,9 +44,9 @@ export default class Ribbit {
         params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
-        return new RibbitRequest(this.buildUrl(url, params), {
+        return new RibbitRequest(buildUrl(url, params), {
             method: 'PUT',
-            body: this.buildBody(data),
+            body: buildBody(data),
             headers: (this.constructor as typeof Ribbit).defaultHeaders,
             ...config
         });
@@ -58,9 +58,9 @@ export default class Ribbit {
         params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
-        return new RibbitRequest(this.buildUrl(url, params), {
+        return new RibbitRequest(buildUrl(url, params), {
             method: 'PATCH',
-            body: this.buildBody(data),
+            body: buildBody(data),
             headers: (this.constructor as typeof Ribbit).defaultHeaders,
             ...config
         });
@@ -71,37 +71,10 @@ export default class Ribbit {
         params: RibbitRequestParams = {},
         config: RequestInit = {},
     ): RibbitRequest {
-        return new RibbitRequest(this.buildUrl(url, params), {
+        return new RibbitRequest(buildUrl(url, params), {
             method: 'DELETE',
             headers: (this.constructor as typeof Ribbit).defaultHeaders,
             ...config
         });
-    }
-
-    private buildBody(data: RibbitRequestData): FormData | string {
-        return isPlainObject(data) ? JSON.stringify(data) : (data as FormData);
-    }
-
-    private buildUrl(baseUrl: string, params?: RibbitRequestParams): string {
-        if (!params) {
-            return baseUrl;
-        }
-
-        const paramString = Object.entries(params)
-            .map(([key, value]) => {
-                switch (typeof value) {
-                    case 'boolean':
-                        return `${key}=${value ? 1 : 0}`;
-                    default:
-                        return `${key}=${value}`;
-                }
-            })
-            .join('&');
-
-        if (!paramString) {
-            return baseUrl;
-        }
-
-        return `${baseUrl}?${paramString}`;
     }
 }
