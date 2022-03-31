@@ -1,4 +1,3 @@
-import Ribbit from '../src';
 import {buildBody, buildUrl} from '../src/RequestHelpers';
 import {baseUrl} from './helpers';
 
