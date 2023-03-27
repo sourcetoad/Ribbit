@@ -1,10 +1,12 @@
 name: Publish
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - production
 
 jobs:
   publish:
+    environment: production
     runs-on: ubuntu-latest
 
     name: Publish
@@ -37,3 +39,16 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get Version
+        id: vars
+        run: echo version="$(jq -r ".version" package.json)" >> $GITHUB_OUTPUT
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: false
+          prerelease: false
+          name: ${{ steps.vars.outputs.version }}
+          tag_name: v${{ steps.vars.outputs.version }}
+          generate_release_notes: true
