@@ -11,10 +11,10 @@ jobs:
 
     name: Publish
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
@@ -31,9 +31,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Publish (GPR)
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Get Version
         id: vars
-        run: echo "::set-output name=version::$(jq -r ".version" package.json)"
+        run: echo version="$(jq -r ".version" package.json)" >> $GITHUB_OUTPUT
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -41,5 +50,5 @@ jobs:
           draft: false
           prerelease: false
           name: ${{ steps.vars.outputs.version }}
-          tag_name: ${{ steps.vars.outputs.version }}
+          tag_name: v${{ steps.vars.outputs.version }}
           generate_release_notes: true
