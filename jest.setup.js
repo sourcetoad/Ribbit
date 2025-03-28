@@ -1,3 +1,4 @@
+import {TextDecoder, TextEncoder} from 'node:util';
 import fetch, {Request, Response} from 'node-fetch';
 import {server} from './tests/mocks';
 
@@ -5,6 +6,8 @@ beforeAll(() => {
     global.fetch = fetch;
     global.Request = Request;
     global.Response = Response;
+    global.TextEncoder = TextEncoder;
+    global.TextDecoder = TextDecoder;
 
     // Establish API mocking before all tests.
     server.listen()
